@@ -290,19 +290,37 @@ class Bot:
 
         return None    
     
-    def send_raw(self, payload):
+    def set_messenger_profile(self, payload):
         request_endpoint = '{0}/me/messenger_profile'.format(self.graph_url) 
         response = requests.post(
-        request_endpoint,
-        params=self.auth_args,
-        data=json.dumps(payload, cls=AttrsEncoder),
-        headers={'Content-Type': 'application/json'})
+                    request_endpoint,
+                    params=self.auth_args,
+                    data=json.dumps(payload, cls=AttrsEncoder),
+                    headers={'Content-Type': 'application/json'})
+        result = response.json()
+        return result    
+    
+    
+    def get_started(self, payload):
+        button = {"get_started":{"payload" : payload}}
+        self.set_messenger_profile(button)
+        
+        
+    def send_raw(self, payload):
+        request_endpoint = '{0}/me/messages'.format(self.graph_url)
+        response = requests.post(
+            request_endpoint,
+            params=self.auth_args,
+            json=payload
+        )
         result = response.json()
         return result
 
     def _send_payload(self, payload):
         """ Deprecated, use send_raw instead """
         return self.send_raw(payload)
+
+ 
     
     
         
