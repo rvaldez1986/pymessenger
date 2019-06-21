@@ -306,7 +306,7 @@ class Bot:
     
     def set_greeting_text(self, text):
         data = {"setting_type": "greeting", "greeting": {"text": text}}
-        fmt = self.graph_url + "me/thread_settings?access_token={token}"
+        fmt = self.graph_url + "me/messenger_profile?access_token={token}"
         return requests.post(fmt.format(token=self.access_token),
                            headers={"Content-Type": "application/json"},
                            data=json.dumps(data))
