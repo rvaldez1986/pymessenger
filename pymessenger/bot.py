@@ -291,7 +291,7 @@ class Bot:
         return None
 
     def send_raw(self, payload):
-        request_endpoint = '{0}/me/messages'.format(self.graph_url)
+        request_endpoint = '{0}/me/messenger_profile'.format(self.graph_url) 
         response = requests.post(
             request_endpoint,
             params=self.auth_args,
@@ -304,17 +304,5 @@ class Bot:
         """ Deprecated, use send_raw instead """
         return self.send_raw(payload)
     
-    def set_greeting_text(self, text):
-        data = {"setting_type": "greeting", "greeting": [{"locale":"default", "text": text}, {"locale":"en_US", "text":text}]}        
-        fmt = self.graph_url + "me/messenger_profile?access_token={token}"
-        return requests.post(fmt.format(token=self.access_token),
-                           headers={"Content-Type": "application/json"},
-                           data=json.dumps(data)) 
     
-    def set_get_started_button_payload(self, payload):
-        data = {"setting_type": "get_started",                
-                "get_started": {"payload": payload}} 
-        fmt = self.graph_url + "me/messenger_profile?access_token={token}"
-        return requests.post(fmt.format(token=self.access_token),
-                             headers={"Content-Type": "application/json"},
-                             data=json.dumps(data))
+        
