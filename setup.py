@@ -20,8 +20,8 @@ setup(
     description="Python Wrapper for Facebook Messenger Platform",
     author='David Chua',
     author_email='zhchua@gmail.com',
-    url='https://github.com/davidchua/pymessenger',
-    download_url='https://github.com/davidchua/pymessenger/tarball/1.0.0',
+    url='https://github.com/rvaldez1986/pymessenger2',
+    download_url='https://github.com/rvaldez1986/pymessenger2/tarball/1.0.0',
     keywords=['facebook messenger', 'python', 'wrapper', 'bot', 'messenger bot'],
     classifiers=[],
 )
