@@ -295,7 +295,7 @@ class Bot:
         response = requests.post(
                     request_endpoint,
                     params=self.auth_args,
-                    data=json.dumps(payload, cls=AttrsEncoder),
+                    data=json.dumps(payload),
                     headers={'Content-Type': 'application/json'})
         result = response.json()
         return result    
