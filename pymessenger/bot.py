@@ -305,16 +305,15 @@ class Bot:
         return self.send_raw(payload)
     
     def set_greeting_text(self, text):
-        data = {"setting_type": "greeting", "greeting": {"text": text}}        
+        data = {"setting_type": "greeting", "greeting": [{"locale":"default", "text": text}, {"locale":"en_US", "text":"Timeless apparel for the masses."}]}        
         fmt = self.graph_url + "me/messenger_profile?access_token={token}"
         return requests.post(fmt.format(token=self.access_token),
                            headers={"Content-Type": "application/json"},
-                           data=json.dumps(data))
+                           data=json.dumps(data)) 
     
     def set_get_started_button_payload(self, payload):
-        data = {"setting_type": "call_to_actions",
-                "thread_state": "new_thread",
-                "call_to_actions": [{"payload": payload}]}
+        data = {"setting_type": "get_started",                
+                "get_started": {"payload": payload}} 
         fmt = self.graph_url + "me/messenger_profile?access_token={token}"
         return requests.post(fmt.format(token=self.access_token),
                              headers={"Content-Type": "application/json"},
