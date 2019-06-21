@@ -305,7 +305,7 @@ class Bot:
         return self.send_raw(payload)
     
     def set_greeting_text(self, text):
-        data = {"setting_type": "greeting", "greeting": [{"locale":"default", "text": text}, {"locale":"en_US", "text":"Timeless apparel for the masses."}]}        
+        data = {"setting_type": "greeting", "greeting": [{"locale":"default", "text": text}, {"locale":"en_US", "text":text}]}        
         fmt = self.graph_url + "me/messenger_profile?access_token={token}"
         return requests.post(fmt.format(token=self.access_token),
                            headers={"Content-Type": "application/json"},
